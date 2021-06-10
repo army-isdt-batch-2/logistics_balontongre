@@ -8,15 +8,21 @@ use Illuminate\Database\Eloquent\Model;
 class Distribution extends Model
 {
     use HasFactory;
+    protected $table="distribution";
 
-    protected $table = 'distribution';
-
-    protected $fillable = [
-        'requestor_name',
-        'requestr_contact',
-        'purpose',
-        'asset_id',
-        'quantity',
-        'status'
+    protected $fillable=[
+    'requestor_name',
+    'requestor_contact',
+    'purpose',
+    'asset_id',
+    'quantity',
+    'status'
+    
     ];
+
+    public function asset()
+    {
+        return $this->belongsTo(Asset::class);
+    }
+
 }

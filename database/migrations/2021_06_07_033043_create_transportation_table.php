@@ -15,9 +15,9 @@ class CreateTransportationTable extends Migration
     {
         Schema::create('transportation', function (Blueprint $table) {
             $table->id();
-            $table->integer('plate_number');
+            $table->string('plate_number');
             $table->string('driver_name');
-            $table->string('driver_contact');
+            $table->integer('driver_contact');
             $table->longText('notes');
             $table->timestamps();
         });

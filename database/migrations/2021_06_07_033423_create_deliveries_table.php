@@ -15,13 +15,13 @@ class CreateDeliveriesTable extends Migration
     {
         Schema::create('deliveries', function (Blueprint $table) {
             $table->id();
-            $table->integer('destribution_id');
-            $table->integer('transportation_id');
+            $table->unsignedBigInteger('distribution_id')->index();
+            $table->unsignedBigInteger('transportation_id')->index();
             $table->date('date_distributed');
-            $table->enum('status',[
-                'delivered', 'returned',
-            ]);
+            $table->enum('status',['delivered','returned']);
             $table->timestamps();
+            $table->foreign('distribution_id')->references('id')->on('distribution');  
+            $table->foreign('transportation_id')->references('id')->on('transportation'); 
         });
     }
 

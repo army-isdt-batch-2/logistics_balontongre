@@ -8,14 +8,19 @@ use Illuminate\Database\Eloquent\Model;
 class Supplier extends Model
 {
     use HasFactory;
+    protected $table="supplier";
 
-    protected $table = 'supplier';
-
-    protected $fillable = [
+    protected $fillable=[
         'name',
         'contact',
         'address',
         'contact_person',
         'category'
+
     ];
+
+    public function asset()
+    {
+        return $this->hasOne(Asset::class,'supplier_id');
+    }
 }
